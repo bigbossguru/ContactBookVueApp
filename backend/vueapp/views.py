@@ -12,4 +12,4 @@ class ContactBookViewSet(viewsets.ModelViewSet):
     authentication_classes = (BasicAuthentication,)
     permission_classes = (IsAuthenticated, )
     queryset = ContactBook.objects.all()
-    serializers = ContactBookSerializer
+    serializer_class = ContactBookSerializer

@@ -5,4 +5,4 @@ from .models import ContactBook
 class ContactBookSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ContactBook
-        fields = ['id', 'name', 'phone', 'department']
+        fields = ('id', 'firstname', 'lastname', 'mobile_phone', 'email', 'department')
