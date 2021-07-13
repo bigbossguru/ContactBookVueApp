@@ -1,82 +1,105 @@
 <template>
   <div class="home">
-    <h1 class="title"> Contacts Book</h1>
-    <hr>
-    <h2 class="subtitle">Add contact</h2>
-    <div class="columns">
-      <div class="column is-4 is-offset-4">
-        <form v-on:submit.prevent="addContact">
-          <div class="field">
-            <label class="lable">First Name</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="First Name" v-model="firstname">
-            </div>
-          </div>
 
-          <div class="field">
-            <label class="lable">Last Name</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="Last Name" v-model="lastname">
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="lable">Phone</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="+420 xxx xxx xxx" v-model="mobile_phone">
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="lable">Email</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="test@test.com" v-model="email">
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="lable">Department</label>
-            <div class="control">
-              <input class="input" type="text" placeholder="Managment" v-model="department">
-            </div>
-          </div>
-
-          <div class="field">
-            <div class="control_btn has-text-centered">
-              <button class="button is-rounded is-link">Add contact</button>
-            </div>
-          </div>
-
-        </form>
+    <section class="hero is-small is-success">
+      <div class="hero-body">
+        <p class="title">Contacts Book</p>
+        <p class="subtitle">This is small contacts book manager</p>
       </div>
-    </div>
-    
-    <div class="columns">
+    </section>
+
+   
+
+    <div class="columns is-desktop">
+      <div class="column is-4">
+        <div class="box">
+
+          <form v-on:submit.prevent="addContact">
+            <div class="field">
+              <label class="lable">First Name</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="First Name" v-model="firstname">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="lable">Last Name</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Last Name" v-model="lastname">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="lable">Phone</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="+420 xxx xxx xxx" v-model="mobile_phone">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="lable">Email</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="test@test.com" v-model="email">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="lable">Department</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Managment" v-model="department">
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="control_btn has-text-centered">
+                <button class="button is-rounded is-link">Add contact</button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+  
       <div class="column">
-        <h2 class="subtitle">List of contacts:</h2>
-        <div class="field has-addons column is-half is-offset-one-quarter">
-          <div class="control has-text-centered">
-            <input class="input" type="text" placeholder="Search or Filter" v-model="search_term">
+        <div class="box">
+          <div class="field is-grouped">
+            <div class="control is-expanded is-fullwidth">
+              <input class="input" type="text" placeholder="Search or Filter" v-model="search_term">
+            </div>
+            <div class="control">
+              <a class="button is-info" v-on:click.prevent="getContactInfo">
+                Search/Filter
+              </a>
+            </div>
           </div>
-          <div class="control">
-            <a class="button is-info" v-on:click.prevent="getContactInfo">
-              Search/Filter
-            </a>
-          </div>
-        </div>
-        <div class="cantact">
-          <div class="card column is-half is-offset-one-quarter" v-for="contact in contacts" :key="contact.id">
-            <div class="card-content">
-              <li> First Name: {{contact.firstname}} </li>
-              <li> Last Name: {{contact.lastname}} </li>
-              <li> Phone: {{contact.mobile_phone}} </li>
-              <li> Email: {{contact.email}} </li>
-              <li> Department: {{contact.department}} </li>
+          <div class="cantact">
+            <div class="card" v-for="contact in contacts" :key="contact.id">
+              <div class="card-content">
+                <div class="columns">
+                  <div class="column is-one-fifth"><img src="../assets/ava.svg" width="150" height="150"></div>
+                  <div class="column">
+                    <li> First Name: {{contact.firstname}} </li>
+                    <li> Last Name: {{contact.lastname}} </li>
+                    <li> Phone: {{contact.mobile_phone}} </li>
+                    <li> Email: {{contact.email}} </li>
+                    <li> Department: {{contact.department}} </li>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Create</strong> by <a href="#">Eldar Gazizov</a>. Copyright &#169; 2021
+        </p>
+      </div>
+    </footer>
 
   </div>
 </template>
@@ -197,6 +220,12 @@ export default {
   opacity: 0.3;
 }
 
+.box {
+  margin-top: 20px;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
 .field {
   margin-top: -0.4rem;
 }
@@ -204,4 +233,5 @@ export default {
 .title {
   margin-top: 30px;
 }
+
 </style>
